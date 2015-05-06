@@ -18,7 +18,7 @@ resource "aws_subnet" "main" {
   availability_zone = "${concat(var.aws_region, lookup(var.subnets, count.index))}"
 
   tags {
-    Name = "${var.environment} subnet ${concat(var.aws_region, lookup(var.subnets, count.index))}"
+    Name = "${var.environment}-${concat(var.aws_region, lookup(var.subnets, count.index))}"
     Environment = "${var.environment}"
   }
 }
