@@ -15,10 +15,10 @@ resource "aws_subnet" "main" {
   count = "${var.amount_subnets}"
   vpc_id = "${aws_vpc.main.id}"
   cidr_block = "${element(split(",", var.subnets_cidr_block), count.index)}"
-  availability_zone = "${concat(var.aws_region, lookup(var.subnets, count.index))}"
+  availability_zone = "${concat(var.aws_region, element(split(",", var.subnets), count.index))}"
 
   tags {
-    Name = "${var.environment}-${concat(var.aws_region, lookup(var.subnets, count.index))}"
+    Name = "${var.environment}-${concat(var.aws_region, element(split(",", var.subnets), count.index))}"
     Environment = "${var.environment}"
   }
 }

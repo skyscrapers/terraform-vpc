@@ -14,13 +14,8 @@ variable "amount_subnets" {
 }
 
 variable "subnets" {
-  description = "Availability zones"
-  default = {
-    "0" = "a"
-    "1" = "b"
-    "2" = "c"
-    "3" = "d"
-  }
+  description = "Availability zones, this needs to be , delimited"
+  default = "a,b,c,d"
 }
 
 variable "subnets_cidr_block" {
