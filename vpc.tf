@@ -7,6 +7,7 @@ resource "aws_vpc" "main" {
   tags {
     Name = "${var.environment} VPC"
     Environment = "${var.environment}"
+    Project = "${var.project}"
   }
 }
 
@@ -20,6 +21,7 @@ resource "aws_subnet" "main" {
   tags {
     Name = "${var.environment}-${concat(var.aws_region, lookup(var.subnets, count.index))}"
     Environment = "${var.environment}"
+    Project = "${var.project}"
   }
 }
 
@@ -30,6 +32,7 @@ resource "aws_internet_gateway" "gw" {
   tags {
     Name = "${var.environment} internet gateway"
     Environment = "${var.environment}"
+    Project = "${var.project}"
   }
 }
 
@@ -44,6 +47,7 @@ resource "aws_route_table" "main" {
   tags {
     Name = "${var.environment} route table"
     Environment = "${var.environment}"
+    Project = "${var.project}"
   }
 }
 

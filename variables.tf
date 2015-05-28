@@ -32,3 +32,8 @@ variable "environment" {
   description = "How do you want to call your environment, this is helpful if you have more than 1 VPC."
   default = "production"
 }
+
+variable "project" {
+  description = "The current project"
+  default = ""
+}
