@@ -13,6 +13,16 @@ variable "amount_subnets" {
   default = "3"
 }
 
+variable "product" {
+  description = "The product the VPC relates to. This is a logical group of all resources"
+  default = "testing"
+}
+
+variable "project" {
+  description = "The project this VPC relates to. This is a sub-grouping in a project."
+  default = "main"
+}
+
 variable "subnets" {
   description = "Availability zones, this needs to be , delimited"
   default = "a,b,c,d"
