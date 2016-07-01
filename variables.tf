@@ -13,6 +13,10 @@ variable "amount_subnets" {
   default = "3"
 }
 
+
+/*
+this currently doesn't allow to change value from module as described here:
+https://github.com/hashicorp/terraform/issues/1336
 variable "subnets" {
   description = "Availability zones"
   default = {
@@ -21,8 +25,18 @@ variable "subnets" {
     "2" = "c"
     "3" = "d"
   }
-}
+}*/
 
+/*Adding this workaround*/
+variable "subnets-keys" {
+  description = "Availability zones keys"
+  default = "0,1,2,3"
+}
+variable "subnets-values" {
+  description = "Availability zones values"
+  default = "a,b,c,d"
+}
+/*end workaround*/
 variable "subnets_cidr_block" {
   description = "Subnets that you need, this needs to be , delimited"
   default =  "10.0.0.0/24,10.0.1.0/24,10.0.2.0/24,10.0.3.0/24"
