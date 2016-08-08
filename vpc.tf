@@ -15,12 +15,11 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "main" {
   count = "${var.amount_subnets}"
   vpc_id = "${aws_vpc.main.id}"
-  cidr_block = "${element(split(",", var.subnets_cidr_block), count.index)}"
-  /*Implementing lookup workaround for subnets*/
-  availability_zone = "${concat(var.aws_region, element(split(",", var.subnets-values),index(split(",",var.subnets-keys),count.index)))}"
+  cidr_block = "${element(var.subnets_cidr_block, count.index)}"
+  availability_zone = "${var.aws_region}${lookup(var.subnets, count.index)}"
 
   tags {
-    Name = "${var.environment}-${concat(var.aws_region, element(split(",", var.subnets-values),index(split(",",var.subnets-keys),count.index)))}"
+    Name = "${var.environment}-${var.aws_region}${lookup(var.subnets, count.index)}"
     Environment = "${var.environment}"
     Project = "${var.project}"
   }
