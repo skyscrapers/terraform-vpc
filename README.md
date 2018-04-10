@@ -1,3 +1,5 @@
+# deprecated, use https://github.com/skyscrapers/terraform-network/tree/master/vpc
+---
 # terraform-vpc
 Create a Amazon AWS VPC with subnets and an internet gateway with route tables.
 
